@@ -5,17 +5,13 @@ import CategoriesScreen from './screens/CategoriesScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <CategoriesScreen />
-    </View>
+    <>
+    <StatusBar style='light' />
+    <CategoriesScreen />
+    </>
+      
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 });
