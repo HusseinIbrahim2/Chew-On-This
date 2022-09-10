@@ -8,7 +8,6 @@ function LogCategoriesItem(itemData) {
         <CategoryListe title={itemData.item.title} color={itemData.item.color} />
     )
 }
-
 function CategoriesScreen() {
     return (
         <FlatList
@@ -16,7 +15,7 @@ function CategoriesScreen() {
             keyExtractor={(item) => item.id}
             renderItem={LogCategoriesItem}
             numColumns={2}
-            />
+        />
     )
 }
 
