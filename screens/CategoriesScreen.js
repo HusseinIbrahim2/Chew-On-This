@@ -7,7 +7,7 @@ import CategoryListe from "../components/CategoryListe";
 function CategoriesScreen({ navigation }) {
     function LogCategoriesItem(itemData) {
         function pressHandler() {
-            navigation.navigate('MealsOverview')
+            navigation.navigate('MealsOverview' , {categoryId : itemData.item.id})
         }
         return (
             <CategoryListe title={itemData.item.title} color={itemData.item.color} onPress={pressHandler} />
@@ -18,7 +18,7 @@ function CategoriesScreen({ navigation }) {
             data={CATEGORIES}
             keyExtractor={(item) => item.id}
             renderItem={LogCategoriesItem}
-            numColumns={2}
+            numColumns={2} 
         />
     )
 }
