@@ -22,7 +22,7 @@ export const CATEGORIES = [
       'affordable',
       'simple',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
-      20,
+      '20m',
       [
         '4 Tomatoes',
         '1 Tablespoon of Olive Oil',
@@ -53,7 +53,7 @@ export const CATEGORIES = [
       'affordable',
       'simple',
       'https://cdn.pixabay.com/photo/2018/07/11/21/51/toast-3532016_1280.jpg',
-      10,
+      '10m',
       [
         '1 Slice White Bread',
         '1 Slice Ham',
@@ -79,7 +79,7 @@ export const CATEGORIES = [
       'pricey',
       'simple',
       'https://cdn.pixabay.com/photo/2014/10/23/18/05/burger-500054_1280.jpg',
-      45,
+      '45m',
       [
         '300g Cattle Hack',
         '1 Tomato',
@@ -108,7 +108,7 @@ export const CATEGORIES = [
       'luxurious',
       'challenging',
       'https://cdn.pixabay.com/photo/2018/03/31/19/29/schnitzel-3279045_1280.jpg',
-      60,
+      '60m',
       [
         '8 Veal Cutlets',
         '4 Eggs',
@@ -141,7 +141,7 @@ export const CATEGORIES = [
       'luxurious',
       'simple',
       'https://cdn.pixabay.com/photo/2016/10/25/13/29/smoked-salmon-salad-1768890_1280.jpg',
-      15,
+      '15m',
       [
         'Arugula',
         "Lamb's Lettuce",
@@ -173,7 +173,7 @@ export const CATEGORIES = [
       'affordable',
       'hard',
       'https://cdn.pixabay.com/photo/2017/05/01/05/18/pastry-2274750_1280.jpg',
-      240,
+      '240m',
       [
         '4 Sheets of Gelatine',
         '150ml Orange Juice',
@@ -206,7 +206,7 @@ export const CATEGORIES = [
       'affordable',
       'simple',
       'https://cdn.pixabay.com/photo/2018/07/10/21/23/pancake-3529653_1280.jpg',
-      20,
+      '20m',
       [
         '1 1/2 Cups all-purpose Flour',
         '3 1/2 Teaspoons Baking Powder',
@@ -235,7 +235,7 @@ export const CATEGORIES = [
       'pricey',
       'challenging',
       'https://cdn.pixabay.com/photo/2018/06/18/16/05/indian-food-3482749_1280.jpg',
-      35,
+      '35m',
       [
         '4 Chicken Breasts',
         '1 Onion',
@@ -266,7 +266,7 @@ export const CATEGORIES = [
       'affordable',
       'hard',
       'https://cdn.pixabay.com/photo/2014/08/07/21/07/souffle-412785_1280.jpg',
-      45,
+      '45m',
       [
         '1 Teaspoon melted Butter',
         '2 Tablespoons white Sugar',
@@ -312,7 +312,7 @@ export const CATEGORIES = [
       'luxurious',
       'simple',
       'https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg',
-      30,
+      '30m',
       [
         'White and Green Asparagus',
         '30g Pine Nuts',
