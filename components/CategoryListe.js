@@ -1,9 +1,9 @@
 import { View, Pressable, Text, StyleSheet } from "react-native";
 
-function CategoryListe({ title, color }) {
+function CategoryListe({ title, color, onPress }) {
     return (
         <View style={[style.griditem, { backgroundColor: color }]}>
-            <Pressable android_ripple={{ color: '#ccc', borderless: true }} style={style.button}>
+            <Pressable android_ripple={{ color: '#ccc', borderless: true }} style={style.button} onPress={onPress} >
                 <View style={style.innerContainer}>
                     <Text style={style.title}> {title} </Text>
                 </View>
