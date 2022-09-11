@@ -3,7 +3,7 @@ import { View, Text, Pressable, Image, StyleSheet } from "react-native";
 function MealItem({ title, imageUri, affordability, complexity, duration }) {
     return (
         <View style={styles.container} >
-            <Pressable>
+            <Pressable android_ripple={{color:'grey'}}   >
                 <View>
                     <Image
                         style={styles.image}
