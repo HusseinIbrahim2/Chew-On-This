@@ -1,9 +1,9 @@
 import { View, Text, Pressable, Image, StyleSheet } from "react-native";
 
-function MealItem({ title, imageUri, affordability, complexity, duration }) {
+function MealItem({ title, imageUri, affordability, complexity, duration , onPress}) {
     return (
         <View style={styles.container} >
-            <Pressable android_ripple={{color:'grey'}}   >
+            <Pressable android_ripple={{color:'grey'}}  onPress={onPress} >
                 <View>
                     <Image
                         style={styles.image}

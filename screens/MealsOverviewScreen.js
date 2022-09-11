@@ -29,9 +29,12 @@ function MealsOverviewScreen({ route, navigation }) {
             complexity: item.complexity,
             duration: item.duration,
         }
+        function pressHandler() {
+            navigation.navigate('MealRecipe')
+        }
 
         return (
-            <MealItem {...mealItemProps} />
+            <MealItem {...mealItemProps} onPress={pressHandler} />
         )
     }
 
