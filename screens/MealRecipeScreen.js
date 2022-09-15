@@ -1,7 +1,9 @@
-import { View, FlatList, Text, Image, StyleSheet } from "react-native";
+import { View, FlatList, Text, Image, StyleSheet, ScrollView } from "react-native";
 
 import MealDetail from "../components/MealDetail";
 import { MEALS } from "../data/data";
+import Liste from "../components/Details/Liste";
+import SubTitle from "../components/Details/SubTitle";
 
 function MealRecipeScreen({ route }) {
     const recId = route.params.recipeId;
@@ -34,31 +36,45 @@ function MealRecipeScreen({ route }) {
                   renderItem={renderMealRecipe}
               />
           </View> */
-        <View>
-            <View style={{alignItems:'center'}}>
-                <Image style={styles.image}
-                    source={{ uri: selectedRecipe.imageUrl }}
-                />
-            </View>
-            <Text>{selectedRecipe.title}</Text>
+        <ScrollView style={styles.root}>
+            <Image style={styles.image}
+                source={{ uri: selectedRecipe.imageUrl }}
+            />
+         <Text style={styles.titleText}>{selectedRecipe.title}</Text>
+            
             <MealDetail
                 affordability={selectedRecipe.affordability}
                 duration={selectedRecipe.duration}
-                complexity={selectedRecipe.complexity} />
-            <View>
-                {selectedRecipe.steps.map((step) => (<Text key={step} style={{ textAlign: 'center' }} >{step}</Text>))}
-            </View>
-            <View>
-                {selectedRecipe.ingredients.map((ingredient) => (<Text key={ingredient} >{ingredient}</Text>))}
-            </View>
-        </View>
+                complexity={selectedRecipe.complexity}
+                textStyle={styles.text}
+            />
+            <SubTitle>Ingredients</SubTitle>
+            <Liste dataPoint={selectedRecipe.ingredients} />
+            <SubTitle>Steps</SubTitle>
+            <Liste dataPoint={selectedRecipe.steps} />
+        </ScrollView>
 
     )
 }
 const styles = StyleSheet.create({
+    root:{
+        marginBottom:32,
+    },
     image: {
-        width: '90%',
-        height: 200,
+        width: '100%',
+        height: 250,
+    },
+    text: {
+        fontSize:15,
+
+    },
+    titleContainer: {
+        alignItems: 'center',
+    },
+    titleText:{
+        textAlign: 'center',
+        fontWeight:'bold',
+        fontSize:24,
     },
 })
 
