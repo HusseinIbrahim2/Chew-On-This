@@ -30,7 +30,7 @@ function MealsOverviewScreen({ route, navigation }) {
             duration: item.duration,
         }
         function pressHandler() {
-            navigation.navigate('MealRecipe')
+            navigation.navigate('MealRecipe' , {recipeId : itemData.item.id} )
         }
 
         return (
