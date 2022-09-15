@@ -40,8 +40,11 @@ function MealRecipeScreen({ route }) {
             <Image style={styles.image}
                 source={{ uri: selectedRecipe.imageUrl }}
             />
-         <Text style={styles.titleText}>{selectedRecipe.title}</Text>
-            
+            <View style={styles.titleContainer}>
+                <Text style={styles.titleText}>{selectedRecipe.title}</Text>
+            </View>
+
+
             <MealDetail
                 affordability={selectedRecipe.affordability}
                 duration={selectedRecipe.duration}
@@ -57,24 +60,27 @@ function MealRecipeScreen({ route }) {
     )
 }
 const styles = StyleSheet.create({
-    root:{
-        marginBottom:32,
+    root: {
+        marginBottom: 32,
     },
     image: {
         width: '100%',
         height: 250,
     },
     text: {
-        fontSize:15,
+        fontSize: 15,
+        color: 'white'
 
     },
     titleContainer: {
         alignItems: 'center',
+        paddingVertical: 10,
     },
-    titleText:{
+    titleText: {
         textAlign: 'center',
-        fontWeight:'bold',
-        fontSize:24,
+        fontWeight: 'bold',
+        fontSize: 24,
+        color: 'white',
     },
 })
 
