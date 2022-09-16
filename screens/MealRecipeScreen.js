@@ -1,15 +1,23 @@
 import { View, FlatList, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { useLayoutEffect } from "react";
 
 import MealDetail from "../components/MealDetail";
 import { MEALS } from "../data/data";
 import Liste from "../components/Details/Liste";
 import SubTitle from "../components/Details/SubTitle";
+import IconButton from "../components/IconButton ";
 
-function MealRecipeScreen({ route }) {
+function MealRecipeScreen({ route , navigation }) {
     const recId = route.params.recipeId;
 
     const selectedRecipe = MEALS.find((meal) => meal.id === recId);
 
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight :() => {return <IconButton name='star' color='white' />}
+            }
+        ) ;       
+    } , [navigation]);
 
     /* function renderMealRecipe(itemData) {
          const item = itemData.item;
