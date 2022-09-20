@@ -7,17 +7,17 @@ import Liste from "../components/Details/Liste";
 import SubTitle from "../components/Details/SubTitle";
 import IconButton from "../components/IconButton ";
 
-function MealRecipeScreen({ route , navigation }) {
+function MealRecipeScreen({ route, navigation }) {
     const recId = route.params.recipeId;
 
     const selectedRecipe = MEALS.find((meal) => meal.id === recId);
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerRight :() => {return <IconButton name='star' color='white' />},
+            headerRight: () => { return <IconButton name='star' color='white' size={24} /> },
         }
-        ) ;       
-    } , [navigation]);
+        );
+    }, [navigation]);
 
     /* function renderMealRecipe(itemData) {
          const item = itemData.item;

@@ -10,6 +10,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealRecipeScreen from './screens/MealRecipeScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
+import IconButton from './components/IconButton ';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -19,8 +20,15 @@ function MyDrawer() {
     <Drawer.Navigator
       screenOptions={{
         headerStyle: { backgroundColor: '#440000ff' },
-        headerTintColor: '#ffffff',
+        drawerStyle: {
+          backgroundColor: '#131319',
+          width: 220
+        },
+        headerTintColor: 'white',
         sceneContainerStyle: { backgroundColor: '#323330' },
+        drawerActiveBackgroundColor: '#decccc',
+        drawerActiveTintColor: '#131319',
+        drawerInactiveTintColor: 'white',
       }}>
       <Drawer.Screen
         name="AllCategories"
@@ -31,8 +39,15 @@ function MyDrawer() {
             fontWeight: 'bold',
           },
           headerTintColor: '#f9f5f5',
+          drawerIcon: ({ focused, size }) => <IconButton name='bars' size={size} color={focused ? '#131319' : '#fffafa'} />
         }} />
-      <Drawer.Screen name="Favorites" component={FavoritesScreen} />
+      <Drawer.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{
+          drawerIcon: ({ focused, size }) => <IconButton name='star' size={size} color={focused ? '#131319' : '#fffafa'} />
+        }}
+      />
     </Drawer.Navigator>
   );
 }
@@ -43,17 +58,17 @@ export default function App() {
       <StatusBar style='light' />
       <NavigationContainer>
         <Stack.Navigator
-         screenOptions={{
-        headerStyle: { backgroundColor: '#440000ff' },
-        headerTintColor: 'white',
-        contentStyle: { backgroundColor: '#323330' }
-         }}
+          screenOptions={{
+            headerStyle: { backgroundColor: '#440000ff' },
+            headerTintColor: 'white',
+            contentStyle: { backgroundColor: '#323330' }
+          }}
         >
           <Stack.Screen
             name="MealsCategories"
             component={MyDrawer}
             options={{
-              headerShown : false
+              headerShown: false
             }}
           />
           <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
