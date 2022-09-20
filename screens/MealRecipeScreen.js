@@ -2,7 +2,7 @@ import { View, FlatList, Text, Image, StyleSheet, ScrollView } from "react-nativ
 import { useLayoutEffect } from "react";
 
 import MealDetail from "../components/MealDetail";
-import { MEALS } from "../data/data";
+import { CATEGORIES, MEALS } from "../data/data";
 import Liste from "../components/Details/Liste";
 import SubTitle from "../components/Details/SubTitle";
 import IconButton from "../components/IconButton ";
@@ -14,8 +14,8 @@ function MealRecipeScreen({ route , navigation }) {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerRight :() => {return <IconButton name='star' color='white' />}
-            }
+            headerRight :() => {return <IconButton name='star' color='white' />},
+        }
         ) ;       
     } , [navigation]);
 

@@ -9,14 +9,30 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import CategoriesScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealRecipeScreen from './screens/MealRecipeScreen';
+import FavoritesScreen from './screens/FavoritesScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Feed" component={CategoriesScreen} />
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: '#440000ff' },
+        headerTintColor: '#ffffff',
+        sceneContainerStyle: { backgroundColor: '#323330' },
+      }}>
+      <Drawer.Screen
+        name="AllCategories"
+        component={CategoriesScreen}
+        options={{
+          title: 'All Categories',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerTintColor: '#f9f5f5',
+        }} />
+      <Drawer.Screen name="Favorites" component={FavoritesScreen} />
     </Drawer.Navigator>
   );
 }
@@ -27,25 +43,21 @@ export default function App() {
       <StatusBar style='light' />
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName='MealsCategories'
-          screenOptions={{
-            headerStyle: { backgroundColor: '#440000ff' },
-            headerTintColor: 'white',
-            contentStyle: { backgroundColor: '#323330' },
-          }}
+         screenOptions={{
+        headerStyle: { backgroundColor: '#440000ff' },
+        headerTintColor: 'white',
+        contentStyle: { backgroundColor: '#323330' }
+         }}
         >
           <Stack.Screen
             name="MealsCategories"
             component={MyDrawer}
             options={{
-              title: 'All Categories',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
-              headerTintColor: 'white',
-            }} />
+              headerShown : false
+            }}
+          />
           <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
-          <Stack.Screen name="MealRecipe" component={MealRecipeScreen} />
+          <Stack.Screen name="MealRecipe" component={MealRecipeScreen} options={{ title: 'Meal Recipe' }} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
