@@ -1,23 +1,44 @@
 import { View, FlatList, Text, Image, StyleSheet, ScrollView } from "react-native";
 import { useLayoutEffect } from "react";
+import { useContext } from "react";
 
 import MealDetail from "../components/MealDetail";
 import { CATEGORIES, MEALS } from "../data/data";
 import Liste from "../components/Details/Liste";
 import SubTitle from "../components/Details/SubTitle";
 import IconButton from "../components/IconButton ";
+import { FavoritesContext } from "../store/context/favorites-context";
 
 function MealRecipeScreen({ route, navigation }) {
-    const recId = route.params.recipeId;
+    const favoriteMealCtx = useContext(FavoritesContext);
+    
+    const recipeId = route.params.recipeId;
+    const selectedRecipe = MEALS.find((meal) => meal.id === recipeId);
+    
+    const mealIsFavorite = favoriteMealCtx.ids.includes(recipeId);
 
-    const selectedRecipe = MEALS.find((meal) => meal.id === recId);
+    function favoriteMealChangeHandler() {
+        if (mealIsFavorite) {
+            favoriteMealCtx.removeFavorite(recipeId);
+        }
+        else {
+            favoriteMealCtx.addFavorite(recipeId);
+        }
+    }
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerRight: () => { return <IconButton name='star' color='white' size={24} /> },
+            headerRight: () => {
+                return( <IconButton
+                    name={mealIsFavorite ? 'star' : 'staro'}
+                    size={30}
+                    color='white'
+                    onPress={favoriteMealChangeHandler} />
+                );
+            },
         }
         );
-    }, [navigation]);
+    }, [navigation , favoriteMealChangeHandler]);
 
     /* function renderMealRecipe(itemData) {
          const item = itemData.item;
