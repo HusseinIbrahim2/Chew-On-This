@@ -1,9 +1,8 @@
-import { View, FlatList, Text, Image, StyleSheet, ScrollView } from "react-native";
-import { useLayoutEffect } from "react";
-import { useContext } from "react";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { useLayoutEffect ,useContext } from "react";
 
 import MealDetail from "../components/MealDetail";
-import { CATEGORIES, MEALS } from "../data/data";
+import { MEALS } from "../data/data";
 import Liste from "../components/Details/Liste";
 import SubTitle from "../components/Details/SubTitle";
 import IconButton from "../components/IconButton ";
@@ -12,17 +11,18 @@ import { FavoritesContext } from "../store/context/favorites-context";
 function MealRecipeScreen({ route, navigation }) {
     const favoriteMealCtx = useContext(FavoritesContext);
     
-    const recipeId = route.params.recipeId;
-    const selectedRecipe = MEALS.find((meal) => meal.id === recipeId);
+    const mealId = route.params.recipeId;
     
-    const mealIsFavorite = favoriteMealCtx.ids.includes(recipeId);
+    const selectedRecipe = MEALS.find((meal) => meal.id === mealId);
+    
+    const mealIsFavorite = favoriteMealCtx.ids.includes(mealId);
 
     function favoriteMealChangeHandler() {
         if (mealIsFavorite) {
-            favoriteMealCtx.removeFavorite(recipeId);
+            favoriteMealCtx.removeFavorite(mealId);
         }
         else {
-            favoriteMealCtx.addFavorite(recipeId);
+            favoriteMealCtx.addFavorite(mealId);
         }
     }
 
@@ -65,6 +65,7 @@ function MealRecipeScreen({ route, navigation }) {
                   renderItem={renderMealRecipe}
               />
           </View> */
+
         <ScrollView style={styles.root}>
             <Image style={styles.image}
                 source={{ uri: selectedRecipe.imageUrl }}
@@ -72,7 +73,6 @@ function MealRecipeScreen({ route, navigation }) {
             <View style={styles.titleContainer}>
                 <Text style={styles.titleText}>{selectedRecipe.title}</Text>
             </View>
-
 
             <MealDetail
                 affordability={selectedRecipe.affordability}
