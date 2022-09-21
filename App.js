@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Provider } from 'react-redux';
 
 
 import CategoriesScreen from './screens/CategoriesScreen';
@@ -11,7 +12,8 @@ import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealRecipeScreen from './screens/MealRecipeScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
 import IconButton from './components/IconButton ';
-import FavoriteContextProvider from './store/context/favorites-context';
+//import FavoriteContextProvider from './store/context/favorites-context';
+import { store } from './store/redux/store';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -57,7 +59,8 @@ export default function App() {
   return (
     <>
       <StatusBar style='light' />
-      <FavoriteContextProvider>
+      {/*<FavoriteContextProvider>*/}
+      <Provider store={store} >
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
@@ -77,7 +80,8 @@ export default function App() {
             <Stack.Screen name="MealRecipe" component={MealRecipeScreen} options={{ title: 'Meal Recipe' }} />
           </Stack.Navigator>
         </NavigationContainer>
-      </FavoriteContextProvider>
+        {/*</FavoriteContextProvider>*/}
+      </Provider>
     </>
 
   );
