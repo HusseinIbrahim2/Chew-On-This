@@ -1,35 +1,43 @@
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
-import { useLayoutEffect ,useContext } from "react";
+import { useLayoutEffect, useContext } from "react";
 
 import MealDetail from "../components/MealDetail";
 import { MEALS } from "../data/data";
 import Liste from "../components/Details/Liste";
 import SubTitle from "../components/Details/SubTitle";
 import IconButton from "../components/IconButton ";
-import { FavoritesContext } from "../store/context/favorites-context";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFavorites, addFavorites } from "../store/redux/favorites";
+//import { FavoritesContext } from "../store/context/favorites-context";
 
 function MealRecipeScreen({ route, navigation }) {
-    const favoriteMealCtx = useContext(FavoritesContext);
-    
+
+    //const favoriteMealCtx = useContext(FavoritesContext);
+    const dispatch = useDispatch();
+    const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids);
+
     const mealId = route.params.recipeId;
-    
+
     const selectedRecipe = MEALS.find((meal) => meal.id === mealId);
-    
-    const mealIsFavorite = favoriteMealCtx.ids.includes(mealId);
+
+    //const mealIsFavorite = favoriteMealCtx.ids.includes(mealId);
+    const mealIsFavorite = favoriteMealIds.includes(mealId);
 
     function favoriteMealChangeHandler() {
         if (mealIsFavorite) {
-            favoriteMealCtx.removeFavorite(mealId);
+            // favoriteMealCtx.removeFavorite(mealId);
+            dispatch(removeFavorites({id: mealId}));
         }
         else {
-            favoriteMealCtx.addFavorite(mealId);
+            // favoriteMealCtx.addFavorite(mealId);
+            dispatch(addFavorites({id: mealId}));
         }
     }
 
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => {
-                return( <IconButton
+                return (<IconButton
                     name={mealIsFavorite ? 'star' : 'staro'}
                     size={30}
                     color='white'
@@ -38,7 +46,7 @@ function MealRecipeScreen({ route, navigation }) {
             },
         }
         );
-    }, [navigation , favoriteMealChangeHandler]);
+    }, [navigation, favoriteMealChangeHandler]);
 
     /* function renderMealRecipe(itemData) {
          const item = itemData.item;
